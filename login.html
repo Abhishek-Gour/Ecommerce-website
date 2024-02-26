@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <!-- bootstrap cdn link -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+
+      .container {
+        max-width: 400px;
+        margin: 100px auto;
+      }
+
+      .login-btn {
+        background-color: goldenrod;
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="text-center mb-4">Login</h2>
+      <form id="loginForm">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email:</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password:</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+        <button
+          type="button"
+          onclick="login()"
+          class="login-btn"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+
+    <!-- Bootstrap cdn js link -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    
+
+    <script>
+      function login() {
+        // Get user input
+        const enteredEmail = document.getElementById("email").value;
+        const enteredPassword = document.getElementById("password").value;
+
+        // Check if email and password are correct
+        if (enteredEmail != "" && enteredPassword != "") {
+          // Show success alert
+          showAlert("success", "Login successful");
+        } else {
+          // Show error alert
+          showAlert("danger", "Incorrect email or password. Please try again.");
+        }
+      }
+
+      function showAlert(type, message) {
+        const alertContainer = document.createElement("div");
+        alertContainer.className = `alert alert-${type} mt-3`;
+        alertContainer.textContent = message;
+
+        const container = document.querySelector(".container");
+        container.appendChild(alertContainer);
+
+        // Remove the alert after 3 seconds (3000 milliseconds)
+        setTimeout(() => {
+          alertContainer.remove();
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>
